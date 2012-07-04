@@ -22,21 +22,19 @@
  * $Id$
  * --------------------------------------------------------------------------
  */
-package org.ow2.jonas.jpaas.resource;
+package org.ow2.jonas.jpaas.resource.bean;
 
-
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolBeanException;
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolLocal;
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolRemote;
+import org.ow2.jonas.jpaas.resource.api.ResourcePool;
+import org.ow2.jonas.jpaas.resource.api.ResourcePoolBeanException;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 @Stateless(mappedName="ResourcePoolBean")
-@Local(ResourcePoolLocal.class)
-@Remote(ResourcePoolRemote.class)
-public class ResourcePoolBean {
+@Local(ResourcePool.class)
+@Remote(ResourcePool.class)
+public class ResourcePoolBean implements ResourcePool {
 
   public ResourcePoolBean() {
   }
