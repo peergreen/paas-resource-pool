@@ -24,10 +24,14 @@
  */
 package org.ow2.jonas.jpaas.resource;
 
-
+import org.ow2.easybeans.osgi.annotation.OSGiResource;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolBeanException;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolLocal;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolRemote;
+import org.ow2.jonas.jpaas.router.manager.api.RouterManagerBeanException;
+import org.ow2.jonas.jpaas.router.manager.bean.RouterManagerBean;
+import org.ow2.util.log.Log;
+import org.ow2.util.log.LogFactory;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
@@ -37,25 +41,39 @@ import javax.ejb.Stateless;
 @Local(ResourcePoolLocal.class)
 @Remote(ResourcePoolRemote.class)
 public class ResourcePoolBean {
+  /**
+  * The logger
+  */
+  private Log logger = LogFactory.getLog(ResourcePoolBean.class);
+
+  @OSGiResource
+  private RouterManagerBean routerEjb;
 
   public ResourcePoolBean() {
   }
 
-  public void getRouter() throws ResourcePoolBeanException {
-     //TODO
-    System.out.println("JPAAS-RESOURCE-POOL / getRouter called");
+  public void getRouter(String routerName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException {
+    logger.info("JPAAS-RESOURCE-POOL / getRouter called");
+    try {
+      routerEjb.createRouter(routerName, paasAgentName, paasConfigurationName, listenPort);
+    } catch (RouterManagerBeanException e) {
+      e.printStackTrace();
+      logger.info("JPAAS-RESOURCE-POOL / Error CreateRouter");
+    }
+
   }
 
   public void getContainer() throws ResourcePoolBeanException {
-    System.out.println("JPAAS-RESOURCE-POOL / getContainer called");
+    logger.info("JPAAS-RESOURCE-POOL / getContainer called");
   }
 
   public void getDbExternal() throws ResourcePoolBeanException{
-    System.out.println("JPAAS-RESOURCE-POOL / getDbExternal called");
+    logger.info("JPAAS-RESOURCE-POOL / getDbExternal called");
   }
 
   public void getIaas() throws ResourcePoolBeanException{
-    System.out.println("JPAAS-RESOURCE-POOL / getIaas called");
+    logger.info("JPAAS-RESOURCE-POOL / getIaas called");
   }
 
 }

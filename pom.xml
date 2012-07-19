@@ -50,15 +50,13 @@
     </license>
   </licenses>
 
+  <properties>
+    <easybeans.annotations.version>2.0.0-M1</easybeans.annotations.version>
+   </properties>
+
   <modules>
     <module>ejb</module>
 	  <module>api</module>
   </modules>
-
-  <scm>
-    <connection>scm:git:git://gitorious.ow2.org/ow2-jasmine/jpaas-environment-manager.git</connection>
-    <developerConnection>scm:git:git@gitorious.ow2.org:ow2-jasmine/jpaas-environment-manager.git</developerConnection>
-    <url>http://gitorious.ow2.org/ow2-jasmine/jpaas-environment-manager/trees/master</url>
-  </scm>
 
 </project>

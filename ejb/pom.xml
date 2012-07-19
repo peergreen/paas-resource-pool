@@ -53,6 +53,26 @@
       <artifactId>resource-pool-api</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>org.ow2.bundles</groupId>
+      <artifactId>ow2-util-log</artifactId>
+      <version>1.0.34-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.jonas.jpaas</groupId>
+      <artifactId>resource-pool-api</artifactId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.easybeans.osgi</groupId>
+      <artifactId>easybeans-osgi-annotations</artifactId>
+      <version>${easybeans.annotations.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.jonas.jpaas</groupId>
+      <version>1.0.0-SNAPSHOT</version>
+      <artifactId>router-manager-ejb</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
