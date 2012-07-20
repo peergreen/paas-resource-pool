@@ -22,14 +22,15 @@
  * $Id$
  * --------------------------------------------------------------------------
  */
-package org.ow2.jonas.jpaas.resource.pool.api;
+package org.ow2.jonas.jpaas.resource.api;
 
-public class ResourcePoolBeanException extends Exception {
-
-   public ResourcePoolBeanException() {}
-
-   public ResourcePoolBeanException(String message) {
-     super(message);
-   }
+public interface ResourcePool {
+  public void getRouter(String routerName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException;
+  public void getContainer(String containerName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException;
+  public void getDbExternal(String databaseName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException;
+  public void getIaas(String computeName, String iaasConfigurationName) throws ResourcePoolBeanException;
 
 }

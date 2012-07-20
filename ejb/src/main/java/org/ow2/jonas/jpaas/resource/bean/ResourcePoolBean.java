@@ -22,8 +22,11 @@
  * $Id$
  * --------------------------------------------------------------------------
  */
-package org.ow2.jonas.jpaas.resource;
+package org.ow2.jonas.jpaas.resource.bean;
 
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.ow2.easybeans.osgi.annotation.OSGiResource;
 import org.ow2.jonas.jpaas.container.manager.api.ContainerManagerBeanException;
 import org.ow2.jonas.jpaas.container.manager.bean.ContainerManagerBean;
@@ -31,22 +34,20 @@ import org.ow2.jonas.jpaas.database.manager.api.DatabaseManagerBeanException;
 import org.ow2.jonas.jpaas.database.manager.bean.DatabaseManagerBean;
 import org.ow2.jonas.jpaas.iaas.manager.api.IaasManagerException;
 import org.ow2.jonas.jpaas.iaas.manager.bean.IaasManagerBean;
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolBeanException;
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolLocal;
-import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolRemote;
+import org.ow2.jonas.jpaas.resource.api.ResourcePool;
+import org.ow2.jonas.jpaas.resource.api.ResourcePoolBeanException;
 import org.ow2.jonas.jpaas.router.manager.api.RouterManagerBeanException;
 import org.ow2.jonas.jpaas.router.manager.bean.RouterManagerBean;
-import org.ow2.util.log.Log;
-import org.ow2.util.log.LogFactory;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 @Stateless(mappedName="ResourcePoolBean")
-@Local(ResourcePoolLocal.class)
-@Remote(ResourcePoolRemote.class)
-public class ResourcePoolBean {
+
+@Local(ResourcePool.class)
+@Remote(ResourcePool.class)
+public class ResourcePoolBean  implements ResourcePool {
   /**
   * The logger
   */
