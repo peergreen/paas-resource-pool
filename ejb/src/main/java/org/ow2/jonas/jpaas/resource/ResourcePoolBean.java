@@ -25,6 +25,12 @@
 package org.ow2.jonas.jpaas.resource;
 
 import org.ow2.easybeans.osgi.annotation.OSGiResource;
+import org.ow2.jonas.jpaas.container.manager.api.ContainerManagerBeanException;
+import org.ow2.jonas.jpaas.container.manager.bean.ContainerManagerBean;
+import org.ow2.jonas.jpaas.database.manager.api.DatabaseManagerBeanException;
+import org.ow2.jonas.jpaas.database.manager.bean.DatabaseManagerBean;
+import org.ow2.jonas.jpaas.iaas.manager.api.IaasManagerException;
+import org.ow2.jonas.jpaas.iaas.manager.bean.IaasManagerBean;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolBeanException;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolLocal;
 import org.ow2.jonas.jpaas.resource.pool.api.ResourcePoolRemote;
@@ -49,6 +55,15 @@ public class ResourcePoolBean {
   @OSGiResource
   private RouterManagerBean routerEjb;
 
+  @OSGiResource
+  private ContainerManagerBean containerEjb;
+
+  @OSGiResource
+  private DatabaseManagerBean datatbaseEjb;
+
+  @OSGiResource
+  private IaasManagerBean iaasEjb;
+
   public ResourcePoolBean() {
   }
 
@@ -64,16 +79,39 @@ public class ResourcePoolBean {
 
   }
 
-  public void getContainer() throws ResourcePoolBeanException {
+  public void getContainer(String containerName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException {
     logger.info("JPAAS-RESOURCE-POOL / getContainer called");
+    try {
+       containerEjb.createContainer(containerName, paasAgentName, paasConfigurationName, listenPort);
+     } catch (ContainerManagerBeanException e) {
+       e.printStackTrace();
+       logger.info("JPAAS-RESOURCE-POOL / Error CreateRouter");
+     }
+
   }
 
-  public void getDbExternal() throws ResourcePoolBeanException{
+  public void getDbExternal(String databaseName, String paasAgentName,
+            String paasConfigurationName, Integer listenPort) throws ResourcePoolBeanException{
     logger.info("JPAAS-RESOURCE-POOL / getDbExternal called");
+    try {
+       datatbaseEjb.createDatabase(databaseName, paasAgentName, paasConfigurationName, listenPort);
+     } catch (DatabaseManagerBeanException e) {
+       e.printStackTrace();
+       logger.info("JPAAS-RESOURCE-POOL / Error CreateRouter");
+     }
+
   }
 
-  public void getIaas() throws ResourcePoolBeanException{
+  public void getIaas(String computeName, String iaasConfigurationName) throws ResourcePoolBeanException{
     logger.info("JPAAS-RESOURCE-POOL / getIaas called");
+    try {
+       iaasEjb.createCompute(computeName, iaasConfigurationName);
+     } catch (IaasManagerException e) {
+       e.printStackTrace();
+       logger.info("JPAAS-RESOURCE-POOL / Error CreateRouter");
+     }
+
   }
 
 }
