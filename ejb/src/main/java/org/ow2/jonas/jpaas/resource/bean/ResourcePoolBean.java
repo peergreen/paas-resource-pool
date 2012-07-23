@@ -28,16 +28,16 @@ package org.ow2.jonas.jpaas.resource.bean;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.ow2.easybeans.osgi.annotation.OSGiResource;
+import org.ow2.jonas.jpaas.container.manager.api.ContainerManager;
 import org.ow2.jonas.jpaas.container.manager.api.ContainerManagerBeanException;
-import org.ow2.jonas.jpaas.container.manager.bean.ContainerManagerBean;
+import org.ow2.jonas.jpaas.database.manager.api.DatabaseManager;
 import org.ow2.jonas.jpaas.database.manager.api.DatabaseManagerBeanException;
-import org.ow2.jonas.jpaas.database.manager.bean.DatabaseManagerBean;
 import org.ow2.jonas.jpaas.iaas.manager.api.IaasManagerException;
-import org.ow2.jonas.jpaas.iaas.manager.bean.IaasManagerBean;
+import org.ow2.jonas.jpaas.iaas.manager.api.IIaasManager;
 import org.ow2.jonas.jpaas.resource.api.ResourcePool;
 import org.ow2.jonas.jpaas.resource.api.ResourcePoolBeanException;
+import org.ow2.jonas.jpaas.router.manager.api.RouterManager;
 import org.ow2.jonas.jpaas.router.manager.api.RouterManagerBeanException;
-import org.ow2.jonas.jpaas.router.manager.bean.RouterManagerBean;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
@@ -54,16 +54,16 @@ public class ResourcePoolBean  implements ResourcePool {
   private Log logger = LogFactory.getLog(ResourcePoolBean.class);
 
   @OSGiResource
-  private RouterManagerBean routerEjb;
+  private RouterManager routerEjb;
 
   @OSGiResource
-  private ContainerManagerBean containerEjb;
+  private ContainerManager containerEjb;
 
   @OSGiResource
-  private DatabaseManagerBean datatbaseEjb;
+  private DatabaseManager datatbaseEjb;
 
   @OSGiResource
-  private IaasManagerBean iaasEjb;
+  private IIaasManager iaasEjb;
 
   public ResourcePoolBean() {
   }
