@@ -29,7 +29,7 @@
 
   <groupId>org.ow2.jonas.jpaas.resource-pool</groupId>
   <artifactId>jpaas-resource-pool</artifactId>
-  <version>1.0.0-M1</version>
+  <version>1.0.0-M2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <description>JPaaS :: Resource Pool</description>
