@@ -50,10 +50,11 @@
     <module>ejb</module>
   </modules>
 
-  <scm>
-    <connection>scm:git:git://gitorious.ow2.org/ow2-jasmine/jpaas-resource-pool.git</connection>
-    <developerConnection>scm:git:git@gitorious.ow2.org:ow2-jasmine/jpaas-resource-pool.git</developerConnection>
-    <url>http://gitorious.ow2.org/ow2-jasmine/jpaas-resource-pool/trees/master</url>
-  </scm>
+    <scm>
+        <connection>scm:git:https://forge.peergreen.com/git/git/jpaas/jpaas-resource-pool.git</connection>
+        <developerConnection>scm:git:https://forge.peergreen.com/git/git/jpaas/jpaas-resource-pool.git</developerConnection>
+        <url>https://forge.peergreen.com/git/summary/?r=jpaas/jpaas-resource-pool.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
 </project>
